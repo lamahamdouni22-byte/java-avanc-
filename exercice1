@@ -3,14 +3,12 @@ public class Compte {
     private String numero;
     private double solde;
 
-    // Constructeur paramétré
     public Compte(String numero, double soldeInitial) {
         this.numero = numero;
         if (soldeInitial < 0) soldeInitial = 0; 
         this.solde = soldeInitial;
     }
 
-    // Créditer : ajouter montant (montant positif attendu)
     public void credite(double montant) {
         if (montant > 0) {
             solde += montant;
@@ -19,7 +17,6 @@ public class Compte {
         }
     }
 
-    // Débiter : retirer montant si solde suffisant (ne jamais rendre solde négatif)
     public boolean debite(double montant) {
         if (montant <= 0) {
             System.out.println("Montant de débit invalide.");
@@ -34,17 +31,14 @@ public class Compte {
         }
     }
 
-    // Retourne le solde
     public double getSolde() {
         return solde;
     }
 
-    // Affiche numero et solde
     public void affiche() {
         System.out.printf("Compte n°%s — Solde: %.2f%n", numero, solde);
     }
 
-    // Vérifie si le numéro passé en param correspond à celui du compte
     public boolean verif(String num) {
         if (num == null) return false;
         return this.numero.equals(num);
